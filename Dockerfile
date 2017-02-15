@@ -4,6 +4,7 @@ MAINTAINER Jon Schulberger <jschoulzy@gmail.com>
 EXPOSE 20 21 990 10100 10100
 
 RUN adduser deluge --disabled-login
+RUN chmod a-w /home/deluge
 
 RUN apt-get -qq update && \
     apt-get install -y vsftpd && \
