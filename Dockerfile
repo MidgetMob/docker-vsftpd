@@ -12,4 +12,4 @@ RUN apt-get -qq update && \
 COPY vsftpd.conf /etc/vsftpd.conf
 COPY vsftpd.userlist /etc/vsftpd.userlist
 
-CMD ["service vsftpd start && tail -F /var/log/dmesg"]
+CMD ["service vsftpd start && tail -F /dev/null"]
