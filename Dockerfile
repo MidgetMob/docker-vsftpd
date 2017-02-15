@@ -9,6 +9,8 @@ RUN apt-get -qq update && \
     apt-get install -y vsftpd && \
     rm -rf /var/lib/apt/lists/*
     
+RUN chkconfig -add vsftpd
+    
 COPY vsftpd.conf /etc/vsftpd.conf
 COPY vsftpd.userlist /etc/vsftpd.userlist
 
