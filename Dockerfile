@@ -9,7 +9,7 @@ RUN apt-get -qq update && \
     apt-get install -y vsftpd chkconfig && \
     rm -rf /var/lib/apt/lists/*
     
-RUN chkconfig -add vsftpd
+RUN systemctl enable vsftpd
     
 COPY vsftpd.conf /etc/vsftpd.conf
 COPY vsftpd.userlist /etc/vsftpd.userlist
