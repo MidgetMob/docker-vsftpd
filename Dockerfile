@@ -6,7 +6,7 @@ EXPOSE 20 21 990 10100 10100
 RUN adduser deluge --disabled-login
 
 RUN apt-get -qq update && \
-    apt-get install -y vsftpd && \
+    apt-get install -y vsftpd chkconfig && \
     rm -rf /var/lib/apt/lists/*
     
 RUN chkconfig -add vsftpd
