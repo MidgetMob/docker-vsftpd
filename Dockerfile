@@ -13,5 +13,3 @@ RUN systemctl enable vsftpd
     
 COPY vsftpd.conf /etc/vsftpd.conf
 COPY vsftpd.userlist /etc/vsftpd.userlist
-
-CMD ["service vsftpd start && tail -f /dev/null"]
