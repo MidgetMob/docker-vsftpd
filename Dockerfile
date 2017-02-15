@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 MAINTAINER Jon Schulberger <jschoulzy@gmail.com>
 
-EXPOSE -P 20 21 990 10100 10100
+EXPOSE 20 21 990 10100 10100
 
 RUN adduser deluge --disabled-login
 
