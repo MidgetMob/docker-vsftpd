@@ -32,7 +32,7 @@ EXPOSE ${port_ftp_data} ${port_ftp_ctrl} ${port_ftps_imp} \
 # Add our user, set password, and add our group
 RUN adduser ${VUSER} -D && \
     echo "${VUSER}:${VPASS}" | chpasswd && \
-    addgroup ${VGRP}
+    id -u ${VGRP} &>/dev/null || addgroup ${VGRP}
 
 # Install vsftpd and create required files
 RUN apk add --no-cache \
