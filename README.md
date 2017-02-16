@@ -1,7 +1,7 @@
 # Build
-docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]
+docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]  
 docker tag \<container id> \<docker name>/\<repo>  
-docker push \<docker name>/\<repo>
+docker push \<docker name>/\<repo>  
 
 # Other Requirements
 You must have a cert/key pair for ssl encryption mounted somewhere in the container with ro privileges
