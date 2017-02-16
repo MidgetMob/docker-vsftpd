@@ -4,22 +4,36 @@ Supports:
 * FTP
 * FTPS
 
+# Recommended Configuration
+* Volumes (see examples below if unclear)
+  * All data volumes mapped to some folder in /home/\<USER> (read & write).
+  * SSL certificate and key mapped to some location in the container (read only).
+* Ports (defaults will be used unless specified)
+  * Alternate FTP(s) ports must be specified during container build (--build-arg port_name=value).
+  * Ports can be overridden if EXPOSE can be used elsewhere (rancherOS).
+  * Ports must be mapped from host when deploying this container.
+* IP address
+  * Define pasv_addr either during build time or in environment variables.
+  * Set pasv_addr_resolve accordingly (YES if pasv_addr is a hostname).
+* Credentials
+  * Username must be specified during container build (VUSER).
+  * Password can be specified during container build but it is recommended to set the password via an environment variable (VPASS).
+
 # Configuration
 * You may override any of the environment variables either during the container build process or when declaring a new container
 * You may provide your own configuration however this means no vsftpd environment variables will be used. User and ports should still be specified during the initial container build however.
 
 # Other Notes
-* Setting the password while building the container is highly discouraged and it is recommended that the user password be specified in the environment variables.
-* You must have a cert/key pair for ssl encryption mounted somewhere in the container with ro privileges
-* User or group should mirror data container user/group
-* Data volumes should be mounted as a subfolder of /home/\<USER> with rw privileges
-* Specified ports should be mapped from the host to this container
+* Password should be specified only as an environment variable.
+* SSL key and certificate are required by default. A custom configuration can be specified to disable SSL.
+* To avoid weird permission errors, either the user (VUSER) or group (VGRP) should match that of other containers accessing the same data volumes.
 
 *Example for mounting volumes*
 
 Host Path | Container Path
 --------- | --------------
-/cert/location/on/host.pem | /cert/location/on/client.pem:ro
+/cert/location/on/host.crt | /cert/location/on/client.crt:ro
+/key/location/on/host.crt | /cert/location/on/client.key:ro
 plex-data-volume | /home/\<USER>/plex-data:rw
 
 # Available Environment Variables
@@ -41,4 +55,4 @@ rsa_key | /etc/ssl-certs/vsftpd.pem | location of the ssl key in the container
 # Build
 1. docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]  
 3. docker tag \<container id> \<docker name>/\<repo>  
-3. docker push \<docker name>/\<repo> 
+3. docker push \<docker name>/\<repo> (*optional*)
