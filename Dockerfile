@@ -31,7 +31,7 @@ ENV VUSER=${VUSER} \
     rsa_cert=${rsa_cert} \
     rsa_key=${rsa_key} \
     custom_conf=${custom_conf} \
-    custom_conf_loc=${custom_conf} \
+    custom_conf_loc=${custom_conf_loc} \
     default_conf_loc=/etc/vsftpd/vsftpd.conf
 
 # Make sure the required ports are available
