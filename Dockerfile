@@ -14,6 +14,8 @@ ARG pasv_addr_resolve=NO
 ARG pasv_addr=deluge.majicflight.com
 ARG rsa_cert=/etc/ssl-certs/vsftpd.pem
 ARG rsa_key=/etc/ssl-certs/vsftpd.pem
+ARG custom_conf=false
+ARG custom_conf_loc=
 
 # Env vals
 ENV VUSER=${VUSER}
@@ -28,6 +30,9 @@ ENV pasv_addr_resolve=${pasv_addr_resolve}
 ENV pasv_addr=${pasv_addr}
 ENV rsa_cert=${rsa_cert}
 ENV rsa_key=${rsa_key}
+ENV custom_conf=${custom_conf}
+ENV custom_conf_loc=${custom_conf}
+ENV default_conf_loc=/etc/vsftpd/vsftpd.conf
 
 # Make sure the required ports are available
 EXPOSE ${port_ftp_data} ${port_ftp_ctrl} ${port_ftps_imp} \
