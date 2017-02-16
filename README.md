@@ -7,8 +7,8 @@ Supports:
 # Recommended Configuration
 * Build Arguments (--build-arg key=value)
   * Ports
-    * port_pasv_min
-    * port_pasv_max
+    * port_pasv_min
+    * port_pasv_max
 * Environment Variables (during or after initial container build)
   * Credentials
     * rsa_cert
