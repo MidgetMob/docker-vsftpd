@@ -15,7 +15,6 @@ COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
 RUN echo ${DUSER} >> /etc/vsftpd/vsftpd.userlist
 
 # Enforce permissions on init script and home directory
-RUN chmod a+x /vsftpd_init.sh && \
-    chmod a-w /home/${DUSER}
+RUN chmod a-w /home/${DUSER}
 
 CMD ["/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf"]
