@@ -20,6 +20,7 @@ Supports:
 * Specified ports should be mapped from the host to this container
 
 _Example for mounting volumes_
+
 Host Path | Container Path
 --------- | --------------
 /cert/location/on/host.pem | /cert/location/on/client.pem:ro
