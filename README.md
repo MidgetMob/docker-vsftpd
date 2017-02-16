@@ -27,6 +27,11 @@ Supports:
   * rsa_key
   * all data volumes
 
+## How to Build
+1. docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]  
+3. docker tag \<container id> \<docker name>/\<repo>  
+3. docker push \<docker name>/\<repo> (*optional*)
+
 ## Configuration Notes
 * Volumes (see examples below if unclear)
   * All data volumes mapped to some folder in /home/\<USER>
@@ -69,8 +74,3 @@ pasv_addr_resolve | YES | whether or not the pasv_addr is a hostname
 pasv_addr | ftp.mysite.com | hostname or ip that points to this server  
 rsa_cert | /etc/ssl-certs/vsftpd.pem | location of the ssl certificate in the container  
 rsa_key | /etc/ssl-certs/vsftpd.pem | location of the ssl key in the container
-
-## Build
-1. docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]  
-3. docker tag \<container id> \<docker name>/\<repo>  
-3. docker push \<docker name>/\<repo> (*optional*)
