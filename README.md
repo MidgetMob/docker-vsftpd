@@ -9,6 +9,7 @@ Supports:
 * You may provide your own configuration however this means no environment variables will be used. User, password, and ports should still be specified during the initial container build.
 
 # Other Notes
+* Setting the password while building the container is highly discouraged and it is recommended that the user password be specified in the environment variables.
 * You must have a cert/key pair for ssl encryption mounted somewhere in the container with ro privileges
 * User or group should mirror data container user/group
 * Data volumes should be mounted as a subfolder of /home/\<USER> with rw privileges
