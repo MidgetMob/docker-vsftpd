@@ -19,7 +19,8 @@ Supports:
 * Data volumes should be mounted as a subfolder of /home/\<USER> with rw privileges
 * Specified ports should be mapped from the host to this container
 
-_Example for mounting volumes_
+
+*Example for mounting volumes*
 
 Host Path | Container Path
 --------- | --------------
