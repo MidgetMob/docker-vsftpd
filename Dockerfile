@@ -1,21 +1,20 @@
-FROM ubuntu:latest
+FROM alpine:3.5
 MAINTAINER Jon Schulberger <jschoulzy@gmail.com>
+
+ARG DUSER=deluge
 
 EXPOSE 20 21 990 10100 10100
 
-RUN adduser deluge --disabled-login
+RUN adduser ${DUSER} --disabled-login
 
-RUN apt-get -qq update && \
-    apt-get install -y vsftpd && \
-    rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache vsftpd
     
-RUN systemctl enable vsftpd
-    
-COPY vsftpd.conf /etc/vsftpd.conf
-COPY vsftpd.userlist /etc/vsftpd.userlist
-COPY entrypoint.sh /entrypoint.sh
+COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
+COPY vsftpd.userlist /etc/vsftpd/vsftpd.userlist
+COPY vsftpd_init.sh /vsftpd_init.sh
 
-RUN chmod a+x /entrypoint.sh && \
-    chmod a-w /home/deluge
+# Enforce permissions on init script and home directory
+RUN chmod a+x /vsftpd_init.sh && \
+    chmod a-w /home/${DUSER}
 
-CMD ["/entrypoint.sh"]
+CMD ["/vsftpd_init.sh"]
