@@ -8,6 +8,7 @@ ARG port_ftp_ctrl=21
 ARG port_ftps_imp=990
 ARG port_pasv_min=10100
 ARG port_pasv_max=10101
+ARG pasv_addr=deluge.majicflight.com
 ARG rsa_cert=/etc/ssl-certs/vsftpd.pem
 ARG rsa_key=/etc/ssl-certs/vsftpd.pem
 
@@ -20,6 +21,7 @@ ENV port_ftp_ctrl=${port_ftp_ctrl}
 ENV port_ftps_imp=${port_ftps_imp}
 ENV port_pasv_min=${port_pasv_min}
 ENV port_pasv_max=${port_pasv_max}
+ENV pasv_addr=${psv_addr}
 ENV rsa_cert=${rsa_cert}
 ENV rsa_key=${rsa_key}
 
