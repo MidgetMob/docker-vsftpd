@@ -9,7 +9,7 @@ id -u ${VUSER} &>/dev/null || adduser ${VUSER} -D
 echo "${VUSER}:${VPASS}" | chpasswd
 
 # Make sure group exists
-id -u ${VGRP} &>/dev/null || addgroup ${VGRP}
+getent group ${VGRP} || addgroup ${VGRP}
 
 # Make sure folder exists for vsftpd
 mkdir -p /var/run/vsftpd/empty
