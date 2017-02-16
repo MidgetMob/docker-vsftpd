@@ -1,24 +1,52 @@
 FROM alpine:3.5
 MAINTAINER Jon Schulberger <jschoulzy@gmail.com>
 
+# Arg defaults
 ARG VUSER=deluge
 ARG VPASS=deluge
+ARG VGRP=deluge
+ARG port_ftp_data=20
+ARG port_ftp_ctrl=21
+ARG port_ftps_imp=990
+ARG port_pasv_min=10100
+ARG port_pasv_max=10101
+ARG rsa_cert=/etc/ssl-certs/vsftpd.pem
+ARG rsa_key=/etc/ssl-certs/vsftpd.pem
 
-EXPOSE 20 21 990 10100 10100
+# Env vals to pass on
+ENV VUSER=${VUSER}
+ENV VPASS=${VPASS}
+ENV VGRP=${VGRP}
+ENV port_ftp_data=${port_ftp_data}
+ENV port_ftp_ctrl=${port_ftp_ctrl}
+ENV port_ftps_imp=${port_ftps_imp}
+ENV port_pasv_min=${port_pasv_min}
+ENV port_pasv_max=${port_pasv_max}
+ENV rsa_cert=${rsa_cert}
+ENV rsa_key=${rsa_key}
 
+# Make sure the required ports are available
+EXPOSE ${port_ftp_data} ${port_ftp_ctrl} ${port_ftps_imp} \
+       ${port_pasv_min} ${port_pasv_max}
+
+# Add our user, set password, and add our group
 RUN adduser ${VUSER} -D && \
-    echo "${VUSER}:${VPASS}" | chpasswd
+    echo "${VUSER}:${VPASS}" | chpasswd && \
+    addgroup ${VGRP}
 
+# Install vsftpd and create required files
 RUN apk add --no-cache \
     vsftpd && \
     mkdir -p /var/run/vsftpd/empty && \
     echo ${VUSER} >> /etc/vsftpd/vsftpd.userlist
 
+# Move config and init script over
 COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
 COPY vsftpd_init.sh /vsftpd_init.sh
 
-# Enforce permissions on init script and home directory
-RUN chmod a-w /home/${VUSER} && \
+# Enforce permissions on home directory and init script
+RUN chmod u=rx,g=rx,o=rx /home/${VUSER} && \
+    chown -R ${VUSER}:${VGRP} /home/${VUSER} && \
     chmod a+x /vsftpd_init.sh
 
 CMD ["/vsftpd_init.sh"]
