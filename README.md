@@ -6,7 +6,7 @@ Supports:
 
 ## Recommended Configuration
 * Build Arguments (--build-arg key=value)
-  * Ports (only necessary for EXPOSE)
+  * Ports (EXPOSED during build)
     * port_pasv_min
     * port_pasv_max
 * Environment Variables (after initial container build)
