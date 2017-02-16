@@ -27,7 +27,7 @@ Supports:
   * rsa_key
   * all data volumes
 
-## Notes
+## Configuration Notes
 * Volumes (see examples below if unclear)
   * All data volumes mapped to some folder in /home/\<USER>
   * SSL certificate and key mapped to some location in the container
