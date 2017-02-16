@@ -1,9 +1,17 @@
 This package is designed to be used alongside at least one other container as a remote access point for service-related files. Some examples would be Plex or a seedbox.
 
+Supports:
+* FTP
+* FTPS
+
 # Build
 1. docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]  
 3. docker tag \<container id> \<docker name>/\<repo>  
 3. docker push \<docker name>/\<repo>  
+
+# Configuration
+* You may override any of the environment variables either during the container build process or when declaring a new container
+* You may provide your own configuration however this means no environment variables will be used. User, password, and ports should still be specified during the initial container build.
 
 # Other Requirements
 * You must have a cert/key pair for ssl encryption mounted somewhere in the container with ro privileges
@@ -11,18 +19,20 @@ This package is designed to be used alongside at least one other container as a 
 * Data volumes should be mounted as a subfolder of /home/\<USER> with rw privileges
 * Specified ports should be mapped from the host to this container
 
+_Example for mounting volumes_
+
 # Available Environment Variables
 Variable Name | Default Value | Description
 ------------- | ------------- | -----------
-VUSER | deluge | ftp user  
-VPASS | deluge | ftp user password  
-VGRP | deluge | ftp group  
+VUSER | ftpuser | ftp user  
+VPASS | ftpuser | ftp user password  
+VGRP | ftpgroup | ftp group  
 port_ftp_data | 20 | ftp data port 
 port_ftp_ctrl | 21 | ftp ctrl port  
 port_ftps_imp | 990 | implicit ftp port  
 port_pasv_min | 10100 | passive ftp minimum port  
 port_pasv_max | 10101 | passive ftp maximum port
 pasv_addr_resolve | NO | whether or not the pasv_addr is a hostname
-pasv_addr | deluge.majicflight.com | hostname that points to this ip  
+pasv_addr | ftp.mysite.com | hostname or ip that points to this server  
 rsa_cert | /etc/ssl-certs/vsftpd.pem | location of the ssl certificate in the container  
 rsa_key | /etc/ssl-certs/vsftpd.pem | location of the ssl key in the container
