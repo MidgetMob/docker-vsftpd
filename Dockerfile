@@ -5,7 +5,7 @@ ARG DUSER=deluge
 
 EXPOSE 20 21 990 10100 10100
 
-RUN adduser ${DUSER} --disabled-login
+RUN adduser ${DUSER} -D
 
 RUN apk add --no-cache vsftpd
     
