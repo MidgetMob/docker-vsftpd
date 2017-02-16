@@ -8,7 +8,7 @@ Supports:
 * Volumes (see examples below if unclear)
   * All data volumes mapped to some folder in /home/\<USER> (read & write).
   * SSL certificate and key mapped to some location in the container (read only).
-   * Should be specified in environment variables as well.
+    * Should be specified in environment variables as well.
 * Ports (defaults will be used unless specified)
   * Alternate FTP(s) ports must be specified during container build (--build-arg port_name=value).
   * Ports can be overridden if EXPOSE can be used elsewhere (rancherOS).
