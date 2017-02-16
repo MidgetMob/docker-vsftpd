@@ -21,7 +21,7 @@ ENV port_ftp_ctrl=${port_ftp_ctrl}
 ENV port_ftps_imp=${port_ftps_imp}
 ENV port_pasv_min=${port_pasv_min}
 ENV port_pasv_max=${port_pasv_max}
-ENV pasv_addr=${psv_addr}
+ENV pasv_addr=${pasv_addr}
 ENV rsa_cert=${rsa_cert}
 ENV rsa_key=${rsa_key}
 
