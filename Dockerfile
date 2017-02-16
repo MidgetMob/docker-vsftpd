@@ -2,16 +2,16 @@ FROM alpine:3.5
 MAINTAINER Jon Schulberger <jschoulzy@gmail.com>
 
 # Arg defaults
-ARG VUSER=deluge
-ARG VPASS=deluge
-ARG VGRP=deluge
+ARG VUSER=ftpuser
+ARG VPASS=ftpuser
+ARG VGRP=ftpgroup
 ARG port_ftp_data=20
 ARG port_ftp_ctrl=21
 ARG port_ftps_imp=990
 ARG port_pasv_min=10100
 ARG port_pasv_max=10101
 ARG pasv_addr_resolve=YES
-ARG pasv_addr=deluge.majicflight.com
+ARG pasv_addr=ftp.mysite.com
 ARG rsa_cert=/etc/ssl-certs/vsftpd.pem
 ARG rsa_key=/etc/ssl-certs/vsftpd.pem
 ARG custom_conf=false
