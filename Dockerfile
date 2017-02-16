@@ -2,9 +2,7 @@ FROM alpine:3.5
 MAINTAINER Jon Schulberger <jschoulzy@gmail.com>
 
 # Arg defaults
-ARG VUSER=deluge
-ARG VPASS=deluge
-ARG VGRP=deluge
+ARG VUSER=deluge VPASS=deluge VGRP=deluge
 ARG port_ftp_data=20
 ARG port_ftp_ctrl=21
 ARG port_ftps_imp=990
@@ -29,24 +27,15 @@ ENV rsa_key=${rsa_key}
 EXPOSE ${port_ftp_data} ${port_ftp_ctrl} ${port_ftps_imp} \
        ${port_pasv_min} ${port_pasv_max}
 
-# Add our user, set password, and add our group
-RUN adduser ${VUSER} -D && \
-    echo "${VUSER}:${VPASS}" | chpasswd && \
-    id -u ${VGRP} &>/dev/null || addgroup ${VGRP}
-
 # Install vsftpd and create required files
 RUN apk add --no-cache \
-    vsftpd && \
-    mkdir -p /var/run/vsftpd/empty && \
-    echo ${VUSER} >> /etc/vsftpd/vsftpd.userlist
+    vsftpd
 
 # Move config and init script over
 COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
 COPY vsftpd_init.sh /vsftpd_init.sh
 
 # Enforce permissions on home directory and init script
-RUN chmod u=rx,g=rx,o=rx /home/${VUSER} && \
-    chown -R ${VUSER}:${VGRP} /home/${VUSER} && \
-    chmod a+x /vsftpd_init.sh
+RUN chmod a+x /vsftpd_init.sh
 
 CMD ["/vsftpd_init.sh"]
