@@ -1,19 +1,21 @@
 FROM alpine:3.5
 MAINTAINER Jon Schulberger <jschoulzy@gmail.com>
 
-ARG DUSER=deluge
+ARG VUSER=deluge
+ARG VPASS=deluge
 
 EXPOSE 20 21 990 10100 10100
 
-RUN adduser ${DUSER} -D
+RUN adduser ${VUSER} -D && \
+    echo "VUSER:VPASS" | chpasswd
 
 RUN apk add --no-cache \
-    vsftpd
+    vsftpd && \
+    mkdir -p /var/run/vsftpd/empty && \
+    echo ${VUSER} >> /etc/vsftpd/vsftpd.userlist
 
-RUN mkdir -p /var/run/vsftpd/empty
 COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
 COPY vsftpd_init.sh /vsftpd_init.sh
-RUN echo ${DUSER} >> /etc/vsftpd/vsftpd.userlist
 
 # Enforce permissions on init script and home directory
 RUN chmod a-w /home/${DUSER} && \
