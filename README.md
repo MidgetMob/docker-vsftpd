@@ -31,23 +31,23 @@ Supports:
 
 ## Configuration Notes
 * Volumes (see examples below if unclear)
-  * All data volumes mapped to some folder in /home/\<USER>
-  * SSL certificate and key mapped to some location in the container
+  * All data volumes mapped to some folder in /home/\<USER>.
+  * SSL certificate and key mapped to some location in the container.
 * Ports
-  * Alternate FTP(s) ports **MUST** be specified during initial container build
-  * Ports must be mapped from host when deploying this container
+  * Alternate FTP(s) ports **MUST** be specified during initial container build.
+  * Ports must be mapped from host when deploying this container.
 * IP address
-  * pasv_addr **MUST** be set
-  * Set pasv_addr_resolve accordingly (YES if pasv_addr is a hostname)
+  * pasv_addr **MUST** be set.
+  * Set pasv_addr_resolve accordingly (YES if pasv_addr is a hostname).
 * Credentials
-  * Password can be specified during container build but it is recommended to set the password via the environment variable
+  * Password can be specified during container build but it is recommended to set the password via the environment variable.
 
 ## Other Notes
-* SSL key and certificate are required by default. A custom configuration can be specified to disable SSL
-* To avoid weird permission errors, either the user (VUSER) or group (VGRP) should match that of other containers accessing the same data volumes
-* You may override any of the environment variables either during the initial container build process or when declaring a new container (examples below)
-* You may provide your own configuration however this means no vsftpd environment variables will be used. User and ports should still be specified during the initial container build however
-* I recommend setting a memory limit on the deployed container as vsftpd can go wild
+* SSL key and certificate are required by default. A custom configuration can be specified to disable SSL.
+* To avoid weird permission errors, either the user (VUSER) or group (VGRP) should match that of other containers accessing the same data volumes.
+* You may override any of the environment variables either during the initial container build process or when declaring a new container (examples below).
+* You may provide your own configuration however this means no vsftpd environment variables will be used. User and ports should still be specified during the initial container build however.
+* I recommend setting a memory limit on the deployed container as vsftpd will use all available memory.
 
 ## Volume Configuration Examples
 Host Path | Container Path
