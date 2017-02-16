@@ -21,12 +21,8 @@ echo ${VUSER} > /etc/vsftpd/vsftpd.userlist
 chmod u=rx,g=rx,o=rx /home/${VUSER}
 chown -R ${VUSER}:${VGRP} /home/${VUSER}
 
-custom_conf=${custom_conf}
-ENV custom_conf_loc=${custom_conf}
-ENV default_conf_loc=/etc/vsftpd/vsftpd.conf
-
 # Which config should we use?
-if [ ${custom_conf} != "true" ] {
+if [ ${custom_conf} != "true" ]; then
   # Enforce config settings for vsftpd
   # TODO: use all ftp ports
   printf \
@@ -62,11 +58,10 @@ if [ ${custom_conf} != "true" ] {
   \nssl_sslv2=NO\n
   \nssl_sslv3=NO\n
   \nssl_ciphers=HIGH" > ${default_conf_loc}
-}
 # Copy the custom config to the default location
-else {
+else
   cp -f ${custom_conf_loc} ${default_conf_loc}
-}
+fi
 
 # Start vsftpd
 /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
