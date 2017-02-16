@@ -21,41 +21,52 @@ echo ${VUSER} > /etc/vsftpd/vsftpd.userlist
 chmod u=rx,g=rx,o=rx /home/${VUSER}
 chown -R ${VUSER}:${VGRP} /home/${VUSER}
 
-# Enforce config settings for vsftpd
-# TODO: use all ftp ports
-printf \
-"seccomp_sandbox=NO\n
-listen=YES\n
-listen_ipv6=NO\n
-pasv_enable=YES\n
-pasv_min_port=${port_pasv_min}\n
-pasv_max_port=${port_pasv_max}\n
-pasv_address=${pasv_addr}\n
-pasv_addr_resolve=${pasv_addr_resolve}\n
-anonymous_enable=NO\n
-local_enable=YES\n
-write_enable=YES\n
-dirmessage_enable=NO\n
-use_localtime=YES\n
-xferlog_enable=YES\n
-connect_from_port_20=YES\n
-ascii_upload_enable=YES\n
-ascii_download_enable=YES\n
-chroot_local_user=YES\n
-userlist_deny=NO\n
-userlist_enable=YES\n
-userlist_file=/etc/vsftpd/vsftpd.userlist\n
-secure_chroot_dir=/var/run/vsftpd/empty\n
-pam_service_name=vsftpd\n
-rsa_cert_file=${rsa_cert}\n
-rsa_private_key_file=${rsa_key}\n
-ssl_enable=YES\n
-force_local_data_ssl=NO\n
-force_local_logins_ssl=NO\n
-ssl_tlsv1=YES\n
-ssl_sslv2=NO\n
-ssl_sslv3=NO\n
-ssl_ciphers=HIGH\n" > /etc/vsftpd/vsftpd.conf
+custom_conf=${custom_conf}
+ENV custom_conf_loc=${custom_conf}
+ENV default_conf_loc=/etc/vsftpd/vsftpd.conf
+
+# Which config should we use?
+if [ ${custom_conf} != "true" ] {
+  # Enforce config settings for vsftpd
+  # TODO: use all ftp ports
+  printf \
+  "seccomp_sandbox=NO
+  \nlisten=YES
+  \nlisten_ipv6=NO
+  \npasv_enable=YES
+  \npasv_min_port=${port_pasv_min}
+  \npasv_max_port=${port_pasv_max}
+  \npasv_address=${pasv_addr}
+  \npasv_addr_resolve=${pasv_addr_resolve}
+  \nanonymous_enable=NO
+  \nlocal_enable=YES
+  \nwrite_enable=YES
+  \ndirmessage_enable=NO
+  \nuse_localtime=YES
+  \nxferlog_enable=YES
+  \nconnect_from_port_20=YES
+  \nascii_upload_enable=YES\n
+  \nascii_download_enable=YES\n
+  \nchroot_local_user=YES\n
+  \nuserlist_deny=NO\n
+  \nuserlist_enable=YES\n
+  \nuserlist_file=/etc/vsftpd/vsftpd.userlist\n
+  \nsecure_chroot_dir=/var/run/vsftpd/empty\n
+  \npam_service_name=vsftpd\n
+  \nrsa_cert_file=${rsa_cert}\n
+  \nrsa_private_key_file=${rsa_key}\n
+  \nssl_enable=YES\n
+  \nforce_local_data_ssl=NO\n
+  \nforce_local_logins_ssl=NO\n
+  \nssl_tlsv1=YES\n
+  \nssl_sslv2=NO\n
+  \nssl_sslv3=NO\n
+  \nssl_ciphers=HIGH" > ${default_conf_loc}
+}
+# Copy the custom config to the default location
+else {
+  cp -f ${custom_conf_loc} ${default_conf_loc}
+}
 
 # Start vsftpd
 /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
