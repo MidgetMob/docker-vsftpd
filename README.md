@@ -32,7 +32,7 @@ port_ftp_ctrl | 21 | ftp ctrl port
 port_ftps_imp | 990 | implicit ftp port  
 port_pasv_min | 10100 | passive ftp minimum port  
 port_pasv_max | 10101 | passive ftp maximum port
-pasv_addr_resolve | NO | whether or not the pasv_addr is a hostname
+pasv_addr_resolve | YES | whether or not the pasv_addr is a hostname
 pasv_addr | ftp.mysite.com | hostname or ip that points to this server  
 rsa_cert | /etc/ssl-certs/vsftpd.pem | location of the ssl certificate in the container  
 rsa_key | /etc/ssl-certs/vsftpd.pem | location of the ssl key in the container
