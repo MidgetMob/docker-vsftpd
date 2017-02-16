@@ -28,6 +28,8 @@ printf \
 listen=YES\n
 listen_ipv6=NO\n
 pasv_enable=YES\n
+pasv_min_port=${port_pasv_min}\n
+pasv_max_port=${port_pasv_max}\n
 pasv_address=${pasv_addr}\n
 pasv_addr_resolve=YES\n
 anonymous_enable=NO\n
@@ -54,11 +56,6 @@ ssl_tlsv1=YES\n
 ssl_sslv2=NO\n
 ssl_sslv3=NO\n
 ssl_ciphers=HIGH\n" > /etc/vsftpd/vsftpd.conf
-
-# Enforce environment variables in config
-printf \
-"pasv_min_port=${port_pasv_min}\n
-pasv_max_port=${port_pasv_max}\n" >> /etc/vsftpd/vsftpd.conf
 
 # Start vsftpd
 /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
