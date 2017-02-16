@@ -11,11 +11,11 @@ Supports:
     * port_pasv_max
 * Environment Variables (during or after initial container build)
   * Credentials
-    * rsa_cert
-    * rsa_key
-    * VUSER
-    * VPASS
-    * VGRP
+    * rsa_cert
+    * rsa_key
+    * VUSER
+    * VPASS
+    * VGRP
   * Ports
     * port_pasv_min
     * port_pasv_max
