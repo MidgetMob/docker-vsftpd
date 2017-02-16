@@ -20,14 +20,12 @@ Supports:
   * Username must be specified during container build (VUSER).
   * Password can be specified during container build but it is recommended to set the password via an environment variable (VPASS).
 
-# Configuration
-* You may override any of the environment variables either during the container build process or when declaring a new container
-* You may provide your own configuration however this means no vsftpd environment variables will be used. User and ports should still be specified during the initial container build however.
-
 # Other Notes
 * Password should be specified only as an environment variable.
 * SSL key and certificate are required by default. A custom configuration can be specified to disable SSL.
 * To avoid weird permission errors, either the user (VUSER) or group (VGRP) should match that of other containers accessing the same data volumes.
+* You may override any of the environment variables either during the container build process or when declaring a new container (see table below for variables).
+* You may provide your own configuration however this means no vsftpd environment variables will be used. User and ports should still be specified during the initial container build however.
 
 *Example for mounting volumes*
 
