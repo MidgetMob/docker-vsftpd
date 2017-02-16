@@ -10,7 +10,7 @@ RUN adduser ${DUSER} --disabled-login
 RUN apk add --no-cache vsftpd
     
 COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
-COPY vsftpd.userlist /etc/vsftpd/vsftpd.userlist
+RUN echo ${DUSER} >> /etc/vsftpd/vsftpd.userlist
 COPY vsftpd_init.sh /vsftpd_init.sh
 
 # Enforce permissions on init script and home directory
