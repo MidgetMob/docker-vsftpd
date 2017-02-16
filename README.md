@@ -40,7 +40,6 @@ Supports:
   * pasv_addr **MUST** be set
   * Set pasv_addr_resolve accordingly (YES if pasv_addr is a hostname)
 * Credentials
-  * Username **MUST** be specified during container build
   * Password can be specified during container build but it is recommended to set the password via the environment variable
 
 ## Other Notes
