@@ -8,9 +8,9 @@ EXPOSE 20 21 990 10100 10100
 RUN adduser ${DUSER} -D
 
 RUN apk add --no-cache \
-    vsftpd \
-    openrc
-    
+    vsftpd
+
+RUN mkdir -p /var/run/vsftpd/empty
 COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
 RUN echo ${DUSER} >> /etc/vsftpd/vsftpd.userlist
 COPY vsftpd_init.sh /vsftpd_init.sh
@@ -19,4 +19,4 @@ COPY vsftpd_init.sh /vsftpd_init.sh
 RUN chmod a+x /vsftpd_init.sh && \
     chmod a-w /home/${DUSER}
 
-#CMD ["/vsftpd_init.sh"]
+CMD ["/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf"]
