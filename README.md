@@ -6,19 +6,19 @@ Supports:
 
 # Recommended Configuration
 * Volumes (see examples below if unclear)
-  * All data volumes mapped to some folder in /home/\<USER> (read & write).
-  * SSL certificate and key mapped to some location in the container (read only).
-    * Should be specified in environment variables as well.
+  * All data volumes mapped to some folder in /home/\<USER>
+  * SSL certificate and key mapped to some location in the container
+    * Should be specified in environment variables as well
 * Ports (defaults will be used unless specified)
-  * Alternate FTP(s) ports must be specified during container build (--build-arg port_name=value).
-  * Ports can be overridden if EXPOSE can be used elsewhere (rancherOS).
-  * Ports must be mapped from host when deploying this container.
+  * Alternate FTP(s) ports must be specified during container build (--build-arg port_name=value)
+  * Ports can be overridden if EXPOSE can be used elsewhere (rancherOS)
+  * Ports must be mapped from host when deploying this container
 * IP address
-  * Define pasv_addr either during build time or in environment variables.
-  * Set pasv_addr_resolve accordingly (YES if pasv_addr is a hostname).
+  * Define pasv_addr either during build time or in environment variables
+  * Set pasv_addr_resolve accordingly (YES if pasv_addr is a hostname)
 * Credentials
-  * Username must be specified during container build (VUSER).
-  * Password can be specified during container build but it is recommended to set the password via an environment variable (VPASS).
+  * Username must be specified during container build
+  * Password can be specified during container build but it is recommended to set the password via an environment variable
 
 # Other Notes
 * Password should be specified only as an environment variable.
