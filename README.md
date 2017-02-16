@@ -19,9 +19,8 @@ Supports:
   * Address
     * pasv_addr
     * pasv_addr_resolve
-  * Ports (need to EXPOSE if different than build arguments)
-    * port_pasv_min
-    * port_pasv_max
+  * Ports 
+    * Any port can be changed however the new value will need to be exposed and mapped to the host manually.
 * Volumes
   * rsa_cert
   * rsa_key
