@@ -26,7 +26,7 @@ Supports:
   * rsa_cert
   * rsa_key
   * all data volumes
-    
+
 ## Notes
 * Volumes (see examples below if unclear)
   * All data volumes mapped to some folder in /home/\<USER>
