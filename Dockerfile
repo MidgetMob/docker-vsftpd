@@ -19,4 +19,4 @@ COPY vsftpd_init.sh /vsftpd_init.sh
 RUN chmod a+x /vsftpd_init.sh && \
     chmod a-w /home/${DUSER}
 
-CMD ["/vsftpd_init.sh"]
+#CMD ["/vsftpd_init.sh"]
