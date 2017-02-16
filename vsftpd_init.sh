@@ -22,7 +22,7 @@ chmod u=rx,g=rx,o=rx /home/${VUSER}
 chown -R ${VUSER}:${VGRP} /home/${VUSER}
 
 # Which config should we use?
-if [ ${custom_conf} != "true" ]; then
+if [ ${custom_conf} != "true" || ${custom_conf_loc} == "" ]; then
   # Enforce config settings for vsftpd
   # TODO: use all ftp ports
   printf \
