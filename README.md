@@ -4,11 +4,6 @@ Supports:
 * FTP
 * FTPS
 
-# Build
-1. docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]  
-3. docker tag \<container id> \<docker name>/\<repo>  
-3. docker push \<docker name>/\<repo>  
-
 # Configuration
 * You may override any of the environment variables either during the container build process or when declaring a new container
 * You may provide your own configuration however this means no environment variables will be used. User, password, and ports should still be specified during the initial container build.
@@ -42,3 +37,8 @@ pasv_addr_resolve | YES | whether or not the pasv_addr is a hostname
 pasv_addr | ftp.mysite.com | hostname or ip that points to this server  
 rsa_cert | /etc/ssl-certs/vsftpd.pem | location of the ssl certificate in the container  
 rsa_key | /etc/ssl-certs/vsftpd.pem | location of the ssl key in the container
+
+# Build
+1. docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]  
+3. docker tag \<container id> \<docker name>/\<repo>  
+3. docker push \<docker name>/\<repo> 
