@@ -27,7 +27,7 @@ printf \
 "seccomp_sandbox=NO\n
 listen=YES\n
 listen_ipv6=NO\n
-pasv_enable=YES\n" 
+pasv_enable=YES\n
 pasv_address=${pasv_addr}\n
 pasv_addr_resolve=YES\n
 anonymous_enable=NO\n
