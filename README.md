@@ -6,7 +6,7 @@ Supports:
 
 # Configuration
 * You may override any of the environment variables either during the container build process or when declaring a new container
-* You may provide your own configuration however this means no environment variables will be used. User, password, and ports should still be specified during the initial container build.
+* You may provide your own configuration however this means no vsftpd environment variables will be used. User and ports should still be specified during the initial container build however.
 
 # Other Notes
 * Setting the password while building the container is highly discouraged and it is recommended that the user password be specified in the environment variables.
