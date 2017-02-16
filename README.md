@@ -1,3 +1,5 @@
+This package is designed to be used alongside at least one other container as a remote access point for service-related files. Some examples would be Plex or a seedbox.
+
 # Build
 1. docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]  
 3. docker tag \<container id> \<docker name>/\<repo>  
