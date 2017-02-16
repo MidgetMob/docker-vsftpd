@@ -20,6 +20,10 @@ Supports:
 * Specified ports should be mapped from the host to this container
 
 _Example for mounting volumes_
+Host Path | Container Path
+--------- | --------------
+/cert/location/on/host.pem | /cert/location/on/client.pem:ro
+plex-data-volume | /home/\<USER>/plex-data:rw
 
 # Available Environment Variables
 Variable Name | Default Value | Description
