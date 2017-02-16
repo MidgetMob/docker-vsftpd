@@ -1,13 +1,13 @@
 # Build
-docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]  
-docker tag \<container id> \<docker name>/\<repo>  
-docker push \<docker name>/\<repo>  
+1. docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]  
+3. docker tag \<container id> \<docker name>/\<repo>  
+3. docker push \<docker name>/\<repo>  
 
 # Other Requirements
-You must have a cert/key pair for ssl encryption mounted somewhere in the container with ro privileges
-User or group should mirror data container user/group
-Data volumes should be mounted as a subfolder of /home/\<USER> with rw privileges
-Specified ports should be mapped from the host to this container
+* You must have a cert/key pair for ssl encryption mounted somewhere in the container with ro privileges
+* User or group should mirror data container user/group
+* Data volumes should be mounted as a subfolder of /home/\<USER> with rw privileges
+* Specified ports should be mapped from the host to this container
 
 # Available Environment Variables
 Variable Name | Default Value | Description
