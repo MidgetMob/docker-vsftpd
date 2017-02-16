@@ -7,7 +7,9 @@ EXPOSE 20 21 990 10100 10100
 
 RUN adduser ${DUSER} -D
 
-RUN apk add --no-cache vsftpd
+RUN apk add --no-cache \
+    vsftpd \
+    openrc
     
 COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
 RUN echo ${DUSER} >> /etc/vsftpd/vsftpd.userlist
