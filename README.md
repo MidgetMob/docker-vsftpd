@@ -16,9 +16,6 @@ Supports:
     * VUSER
     * VPASS
     * VGRP
-  * Ports
-    * port_pasv_min
-    * port_pasv_max
   * Address
     * pasv_addr
     * pasv_addr_resolve
