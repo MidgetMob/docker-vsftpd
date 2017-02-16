@@ -7,27 +7,26 @@ Supports:
 # Recommended Configuration
 * Build Arguments (--build-arg key=value)
   * Ports
-    * port_pasv_min  \<PORT>
-    * port_pasv_max  \<PORT>
+    * port_pasv_min
+    * port_pasv_max
 * Environment Variables (during or after initial container build)
   * Credentials
-    * rsa_cert /path/in/container/\<CERT FILE>
-    * rsa_key  /path/in/container/\<KEY FILE>
-    * VUSER    \<USERNAME>
-    * VPASS    \<PASSWORD>
-    * VGRP     \<GROUP NAME>
-  * Ports
-    * port_pasv_min \<PORT>
-    * port_pasv_max \<PORT>
-  * Address
-    * pasv_addr         \<IP or hostname>
-    * pasv_addr_resolve \<YES if pasv_addr is hostname>
+    * rsa_cert
+    * rsa_key
+    * VUSER
+    * VPASS
+    * VGRP
+  * Ports
+    * port_pasv_min
+    * port_pasv_max
+  * Address
+    * pasv_addr
+    * pasv_addr_resolve
 * Volumes
-  * rsa_cert       /path/in/container/\<CERT FILE>
-  * rsa_key        /path/in/container/\<KEY FILE>
-  * \<DATA VOLUME> /home/\<USER>/<\FOLDER>
-  * \<HOST PATH>   /home/\<USER>/<\FOLDER>
-    
+  * rsa_cert
+  * rsa_key
+  * all data volumes
+    
 # Notes
 * Volumes (see examples below if unclear)
   * All data volumes mapped to some folder in /home/\<USER>
