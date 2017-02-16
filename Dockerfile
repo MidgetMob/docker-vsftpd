@@ -13,7 +13,6 @@ RUN apk add --no-cache \
 RUN mkdir -p /var/run/vsftpd/empty
 COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
 RUN echo ${DUSER} >> /etc/vsftpd/vsftpd.userlist
-COPY vsftpd_init.sh /vsftpd_init.sh
 
 # Enforce permissions on init script and home directory
 RUN chmod a+x /vsftpd_init.sh && \
