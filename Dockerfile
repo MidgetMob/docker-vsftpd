@@ -14,7 +14,7 @@ ARG pasv_addr=deluge.majicflight.com
 ARG rsa_cert=/etc/ssl-certs/vsftpd.pem
 ARG rsa_key=/etc/ssl-certs/vsftpd.pem
 
-# Env vals to pass on
+# Env vals
 ENV VUSER=${VUSER}
 ENV VPASS=${VPASS}
 ENV VGRP=${VGRP}
@@ -35,8 +35,7 @@ EXPOSE ${port_ftp_data} ${port_ftp_ctrl} ${port_ftps_imp} \
 RUN apk add --no-cache \
     vsftpd
 
-# Move config and init script over
-COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
+# Move init script over
 COPY vsftpd_init.sh /vsftpd_init.sh
 
 # Enforce permissions on home directory and init script
