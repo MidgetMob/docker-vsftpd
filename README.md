@@ -27,12 +27,11 @@ Supports:
 * You may override any of the environment variables either during the container build process or when declaring a new container (see table below for variables).
 * You may provide your own configuration however this means no vsftpd environment variables will be used. User and ports should still be specified during the initial container build however.
 
-*Example for mounting volumes*
-
+# Volume Configuration Examples
 Host Path | Container Path
 --------- | --------------
 /cert/location/on/host.crt | /cert/location/on/client.crt:ro
-/key/location/on/host.crt | /cert/location/on/client.key:ro
+/key/location/on/host.key | /cert/location/on/client.key:ro
 plex-data-volume | /home/\<USER>/plex-data:rw
 
 # Available Environment Variables
