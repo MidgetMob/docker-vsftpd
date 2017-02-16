@@ -7,7 +7,7 @@ ARG VPASS=deluge
 EXPOSE 20 21 990 10100 10100
 
 RUN adduser ${VUSER} -D && \
-    echo "VUSER:VPASS" | chpasswd
+    echo "${VUSER}:${VPASS}" | chpasswd
 
 RUN apk add --no-cache \
     vsftpd && \
