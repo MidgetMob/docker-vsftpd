@@ -2,7 +2,9 @@ FROM alpine:3.5
 MAINTAINER Jon Schulberger <jschoulzy@gmail.com>
 
 # Arg defaults
-ARG VUSER=deluge VPASS=deluge VGRP=deluge
+ARG VUSER=deluge
+ARG VPASS=deluge
+ARG VGRP=deluge
 ARG port_ftp_data=20
 ARG port_ftp_ctrl=21
 ARG port_ftps_imp=990
