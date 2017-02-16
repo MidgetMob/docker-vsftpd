@@ -47,6 +47,7 @@ Supports:
 * To avoid weird permission errors, either the user (VUSER) or group (VGRP) should match that of other containers accessing the same data volumes
 * You may override any of the environment variables either during the initial container build process or when declaring a new container (examples below)
 * You may provide your own configuration however this means no vsftpd environment variables will be used. User and ports should still be specified during the initial container build however
+* I recommend setting a memory limit on the deployed container as vsftpd can go wild
 
 ## Volume Configuration Examples
 Host Path | Container Path
