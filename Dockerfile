@@ -19,8 +19,8 @@ ARG custom_conf_loc=
 
 # Env vals
 ENV VUSER=${VUSER} \
-    ENV VPASS=${VPASS} \
-    ENV VGRP=${VGRP} \
+    VPASS=${VPASS} \
+    VGRP=${VGRP} \
     port_ftp_data=${port_ftp_data} \
     port_ftp_ctrl=${port_ftp_ctrl} \
     port_ftps_imp=${port_ftps_imp} \
