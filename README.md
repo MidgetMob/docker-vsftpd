@@ -9,7 +9,7 @@ Supports:
   * Ports (only necessary for EXPOSE)
     * port_pasv_min
     * port_pasv_max
-* Environment Variables (during or after initial container build)
+* Environment Variables (after initial container build)
   * Credentials
     * rsa_cert
     * rsa_key
