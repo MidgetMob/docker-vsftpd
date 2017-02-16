@@ -29,7 +29,7 @@ ENV rsa_key=${rsa_key}
 
 # Make sure the required ports are available
 EXPOSE ${port_ftp_data} ${port_ftp_ctrl} ${port_ftps_imp} \
-       ${port_pasv_min} ${port_pasv_max}
+       ${port_pasv_min}-${port_pasv_max}
 
 # Install vsftpd and create required files
 RUN apk add --no-cache \
