@@ -8,12 +8,11 @@ Supports:
 * You may override any of the environment variables either during the container build process or when declaring a new container
 * You may provide your own configuration however this means no environment variables will be used. User, password, and ports should still be specified during the initial container build.
 
-# Other Requirements
+# Other Notes
 * You must have a cert/key pair for ssl encryption mounted somewhere in the container with ro privileges
 * User or group should mirror data container user/group
 * Data volumes should be mounted as a subfolder of /home/\<USER> with rw privileges
 * Specified ports should be mapped from the host to this container
-
 
 *Example for mounting volumes*
 
