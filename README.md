@@ -5,16 +5,39 @@ Supports:
 * FTPS
 
 # Recommended Configuration
+* Build Arguments (--build-arg key=value)
+  * Ports
+    * port_pasv_min  \<PORT>
+    * port_pasv_max  \<PORT>
+* Environment Variables (during or after initial container build)
+  * Credentials
+    * rsa_cert /path/in/container/\<CERT FILE>
+    * rsa_key  /path/in/container/\<KEY FILE>
+    * VUSER    \<USERNAME>
+    * VPASS    \<PASSWORD>
+    * VGRP     \<GROUP NAME>
+  * Ports
+    * port_pasv_min \<PORT>
+    * port_pasv_max \<PORT>
+  * Address
+    * pasv_addr         \<IP or hostname>
+    * pasv_addr_resolve \<YES if pasv_addr is hostname>
+* Volumes
+  * rsa_cert       /path/in/container/\<CERT FILE>
+  * rsa_key        /path/in/container/\<KEY FILE>
+  * \<DATA VOLUME> /home/\<USER>/<\FOLDER>
+  * \<HOST PATH>   /home/\<USER>/<\FOLDER>
+    
+# Notes
 * Volumes (see examples below if unclear)
   * All data volumes mapped to some folder in /home/\<USER>
   * SSL certificate and key mapped to some location in the container
-    * Should be specified in environment variables as well
-* Ports (defaults will be used unless specified)
-  * Alternate FTP(s) ports must be specified during container build (--build-arg port_name=value)
+* Ports
+  * Alternate FTP(s) ports **MUST** be specified during container build (--build-arg port_name=port)
   * Ports can be overridden if EXPOSE can be used elsewhere (rancherOS)
   * Ports must be mapped from host when deploying this container
 * IP address
-  * Define pasv_addr either during build time or in environment variables
+  * pasv_addr **MUST** be set
   * Set pasv_addr_resolve accordingly (YES if pasv_addr is a hostname)
 * Credentials
   * Username must be specified during container build
