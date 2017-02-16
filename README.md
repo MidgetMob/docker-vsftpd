@@ -4,7 +4,7 @@ Supports:
 * FTP
 * FTPS
 
-# Recommended Configuration
+## Recommended Configuration
 * Build Arguments (--build-arg key=value)
   * Ports
     * port_pasv_min
@@ -27,7 +27,7 @@ Supports:
   * rsa_key
   * all data volumes
     
-# Notes
+## Notes
 * Volumes (see examples below if unclear)
   * All data volumes mapped to some folder in /home/\<USER>
   * SSL certificate and key mapped to some location in the container
@@ -42,21 +42,21 @@ Supports:
   * Username must be specified during container build
   * Password can be specified during container build but it is recommended to set the password via an environment variable
 
-# Other Notes
+## Other Notes
 * Password should be specified only as an environment variable.
 * SSL key and certificate are required by default. A custom configuration can be specified to disable SSL.
 * To avoid weird permission errors, either the user (VUSER) or group (VGRP) should match that of other containers accessing the same data volumes.
 * You may override any of the environment variables either during the container build process or when declaring a new container (see table below for variables).
 * You may provide your own configuration however this means no vsftpd environment variables will be used. User and ports should still be specified during the initial container build however.
 
-# Volume Configuration Examples
+## Volume Configuration Examples
 Host Path | Container Path
 --------- | --------------
 /cert/location/on/host.crt | /cert/location/on/client.crt:ro
 /key/location/on/host.key | /cert/location/on/client.key:ro
 plex-data-volume | /home/\<USER>/plex-data:rw
 
-# Available Environment Variables
+## Available Environment Variables
 Variable Name | Default Value | Description
 ------------- | ------------- | -----------
 VUSER | ftpuser | ftp user  
@@ -72,7 +72,7 @@ pasv_addr | ftp.mysite.com | hostname or ip that points to this server
 rsa_cert | /etc/ssl-certs/vsftpd.pem | location of the ssl certificate in the container  
 rsa_key | /etc/ssl-certs/vsftpd.pem | location of the ssl key in the container
 
-# Build
+## Build
 1. docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]  
 3. docker tag \<container id> \<docker name>/\<repo>  
 3. docker push \<docker name>/\<repo> (*optional*)
