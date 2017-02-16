@@ -18,21 +18,21 @@ ARG custom_conf=false
 ARG custom_conf_loc=
 
 # Env vals
-ENV VUSER=${VUSER}
-ENV VPASS=${VPASS}
-ENV VGRP=${VGRP}
-ENV port_ftp_data=${port_ftp_data}
-ENV port_ftp_ctrl=${port_ftp_ctrl}
-ENV port_ftps_imp=${port_ftps_imp}
-ENV port_pasv_min=${port_pasv_min}
-ENV port_pasv_max=${port_pasv_max}
-ENV pasv_addr_resolve=${pasv_addr_resolve}
-ENV pasv_addr=${pasv_addr}
-ENV rsa_cert=${rsa_cert}
-ENV rsa_key=${rsa_key}
-ENV custom_conf=${custom_conf}
-ENV custom_conf_loc=${custom_conf}
-ENV default_conf_loc=/etc/vsftpd/vsftpd.conf
+ENV VUSER=${VUSER} \
+    ENV VPASS=${VPASS} \
+    ENV VGRP=${VGRP} \
+    port_ftp_data=${port_ftp_data} \
+    port_ftp_ctrl=${port_ftp_ctrl} \
+    port_ftps_imp=${port_ftps_imp} \
+    port_pasv_min=${port_pasv_min} \
+    port_pasv_max=${port_pasv_max} \
+    pasv_addr_resolve=${pasv_addr_resolve} \
+    pasv_addr=${pasv_addr} \
+    rsa_cert=${rsa_cert} \
+    rsa_key=${rsa_key} \
+    custom_conf=${custom_conf} \
+    custom_conf_loc=${custom_conf} \
+    default_conf_loc=/etc/vsftpd/vsftpd.conf
 
 # Make sure the required ports are available
 EXPOSE ${port_ftp_data} ${port_ftp_ctrl} ${port_ftps_imp} \
