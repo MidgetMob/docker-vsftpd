@@ -37,6 +37,11 @@ By default the FTP server uses active mode and is plain FTP. This mode requires 
   * port_pasv_min
   * port_pasv_max
 
+## Custom configuration file
+* Environment Variables
+  * custom_conf
+  * custom_conf_loc
+
 # Configuration Notes
 * Enabling SSL and/or passive mode
   * **All** requirements mentioned above are required to be set at the time of enabling.
