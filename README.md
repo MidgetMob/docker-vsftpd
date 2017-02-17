@@ -7,7 +7,7 @@ Supports:
 # Build
 1. docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]  
 3. docker tag \<container id> \<docker name>/\<repo>  
-3. docker push \<docker name>/\<repo> (*optional*)
+3. docker push \<docker name>/\<repo> (*optional*)  
 *Any ports that need to be exposed should be added during the initial container build.*
 
 # Configuration
