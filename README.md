@@ -1,4 +1,4 @@
-This package is designed to be used alongside at least one other container as a remote access point for service-related files. Some useful pairings might be Plex or a seedbox.
+This package is designed to be used alongside at least one other container as a remote access point for service-related files. Some useful pairings might be Plex or a seedbox. It is designed around supporting only one user.
 
 Supports:
 * FTP
