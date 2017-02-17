@@ -22,7 +22,7 @@ chmod u=rx,g=rx,o=rx /home/${VUSER}
 chown -R ${VUSER}:${VGRP} /home/${VUSER}
 
 # Which config should we use?
-if [ "$(echo \"${custom_conf}\" | tr '[:upper:]' '[:lower:]')" != "true" ] || [ ${custom_conf_loc} == "" ]; then
+if [ "$(echo ${custom_conf} | tr '[:upper:]' '[:lower:]')" != "true" ] || [ ${custom_conf_loc} == "" ]; then
   # Enforce config settings for vsftpd
   # TODO: use all ftp ports
   printf \
@@ -48,7 +48,7 @@ secure_chroot_dir=/var/run/vsftpd/empty
 pam_service_name=vsftpd\n\n" > ${default_conf_loc}
 
   # Add passive mode vars if necessary
-  if [ "$(echo \"${pasv_enable}\" | tr '[:upper:]' '[:lower:]')" == "no" ]; then
+  if [ "$(echo ${pasv_enable} | tr '[:upper:]' '[:lower:]')" == "no" ]; then
     printf \
 "pasv_min_port=${port_pasv_min}
 pasv_max_port=${port_pasv_max}
@@ -57,7 +57,7 @@ pasv_addr_resolve=${pasv_addr_resolve}\n\n" >> ${default_conf_loc}
   fi
 
   # Add ssl options if necessary
-  if [ "$(echo \"${ssl_enable}\" | tr '[:upper:]' '[:lower:]')" == "yes" ]; then
+  if [ "$(echo ${ssl_enable} | tr '[:upper:]' '[:lower:]')" == "yes" ]; then
      printf \
 "rsa_cert_file=${rsa_cert}
 rsa_private_key_file=${rsa_key}
