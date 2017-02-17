@@ -48,7 +48,7 @@ secure_chroot_dir=/var/run/vsftpd/empty
 pam_service_name=vsftpd\n\n" > ${default_conf_loc}
 
   # Add passive mode vars if necessary
-  if [ "$(echo ${pasv_enable} | tr '[:upper:]' '[:lower:]')" == "no" ]; then
+  if [ "$(echo ${pasv_enable} | tr '[:upper:]' '[:lower:]')" == "yes" ]; then
     printf \
 "pasv_min_port=${port_pasv_min}
 pasv_max_port=${port_pasv_max}
