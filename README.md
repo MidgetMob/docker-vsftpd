@@ -2,62 +2,51 @@ This package is designed to be used alongside at least one other container as a 
 
 Supports:
 * FTP
-* FTPS
+* FTPS 
 
-Passive mode is enabled by default so you must set the env. variables:
-  * port_pasv_min
-  * port_pasv_ma
-  * pasv_addr
-  * pasv_addr_resolve
-  
-unless pasv_enable is set to "NO"  
-
-## Recommended Configuration
-* Build Arguments (--build-arg key=value)
-  * Ports (EXPOSED during build)
-    * port_pasv_min
-    * port_pasv_max
-* Environment Variables (after initial container build)
-  * Credentials
-    * rsa_cert
-    * rsa_key
-    * VUSER
-    * VPASS
-    * VGRP
-  * Address
-    * pasv_addr
-    * pasv_addr_resolve
-  * Ports 
-    * Any port can be changed however the new value will need to be exposed and mapped to the host manually.
-* Volumes
-  * rsa_cert
-  * rsa_key
-  * all data volumes
-
-## How to Build
+# Build
 1. docker build https://github.com/MidgetMob/docker-vsftpd.git [--build-arg key=value]  
 3. docker tag \<container id> \<docker name>/\<repo>  
 3. docker push \<docker name>/\<repo> (*optional*)
+*Any ports that need to be exposed should be added during the initial container build.*
+
+# Configuration
+By default the FTP server uses active mode and is plain FTP. This mode requires the following:
+* Environment Variables
+  * VUSER
+  * VPASS
+  * VGRP
+* Volumes
+  * Any data volume to be accessed via FTP(s) should be mapped to a folder in /home/\<USER>.
+* Ports
+  * Any necessary ports should be mapped from the host to this container.
+  
+Enabling SSL requires:
+* Environment Variables
+  * ssl_enable
+  * rsa_cert
+  * rsa_key
+* Volumes
+  * Certs/keys should be generated on the host and then mapped via volumes (see below for examples).
+
+Passive mode requires:
+* Environment Variables
+  * pasv_addr
+  * pasv_addr_resolve
+  * port_pasv_min
+  * port_pasv_max
 
 ## Configuration Notes
-* Volumes (see examples below if unclear)
-  * All data volumes mapped to some folder in /home/\<USER>.
-  * SSL certificate and key mapped to some location in the container.
-* Ports
-  * Alternate FTP(s) ports **MUST** be specified during initial container build.
-  * Ports must be mapped from host when deploying this container.
-* IP address
-  * pasv_addr **MUST** be set.
-  * Set pasv_addr_resolve accordingly (YES if pasv_addr is a hostname).
+* Enabling SSL and/or passive mode
+  * **All** requirements mentioned above are required to be set at the time of enabling.
 * Credentials
   * Password can be specified during container build but it is recommended to set the password via the environment variable.
 
 ## Other Notes
-* SSL key and certificate are required by default. A custom configuration can be specified to disable SSL.
 * To avoid weird permission errors, either the user (VUSER) or group (VGRP) should match that of other containers accessing the same data volumes.
 * You may override any of the environment variables either during the initial container build process or when declaring a new container (examples below).
-* You may provide your own configuration however this means no vsftpd environment variables will be used. User and ports should still be specified during the initial container build however.
-* I recommend setting a memory limit on the deployed container as vsftpd will use all available memory.
+* Providing a custom configuration file requires port mapping/exposure for the container.
+* I recommend setting a memory limit on the deployed container (200 MiB).
 
 ## Volume Configuration Examples
 Host Path | Container Path
