@@ -4,6 +4,8 @@ Supports:
 * FTP
 * FTPS
 
+*Only passive mode is supported in this package. Active mode can be enabled via the use of a custom config.*
+
 ## Recommended Configuration
 * Build Arguments (--build-arg key=value)
   * Ports (EXPOSED during build)
