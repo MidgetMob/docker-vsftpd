@@ -22,21 +22,20 @@ By default the FTP server uses active mode and is plain FTP. This mode requires 
 * Ports
   * Any necessary ports should be mapped from the host to this container.
   
-> Enabling SSL requires:
-> * Environment Variables
->   * ssl_enable
->   * rsa_cert
->   * rsa_key
-> * Volumes
->   * Certs/keys should be generated on the host and then mapped via volumes (see below for examples).
-  
-  
-> Passive mode requires:
-> * Environment Variables
->   * pasv_addr
->   * pasv_addr_resolve
->   * port_pasv_min
->   * port_pasv_max
+Enabling SSL requires:
+* Environment Variables
+  * ssl_enable
+  * rsa_cert
+  * rsa_key
+* Volumes
+  * Certs/keys should be generated on the host and then mapped via volumes (see below for examples).
+
+'Passive mode requires:
+* Environment Variables
+  * pasv_addr
+  * pasv_addr_resolve
+  * port_pasv_min
+  * port_pasv_max'
 
 ## Configuration Notes
 * Enabling SSL and/or passive mode
