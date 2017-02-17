@@ -48,16 +48,21 @@ userlist_deny=NO\n
 userlist_enable=YES\n
 userlist_file=/etc/vsftpd/vsftpd.userlist\n
 secure_chroot_dir=/var/run/vsftpd/empty\n
-pam_service_name=vsftpd\n
+pam_service_name=vsftpd\n" > ${default_conf_loc}
+
+  # Add ssl options if necessary
+  if [ "$(echo \"${ssl_enable}\" | tr '[:upper:]' '[:lower:]')" == "yes" ]; then
+     printf \
+"ssl_enable=${ssl_enable}\n
 rsa_cert_file=${rsa_cert}\n
 rsa_private_key_file=${rsa_key}\n
-ssl_enable=YES\n
 force_local_data_ssl=NO\n
 force_local_logins_ssl=NO\n
 ssl_tlsv1=YES\n
 ssl_sslv2=NO\n
 ssl_sslv3=NO\n
-ssl_ciphers=HIGH" > ${default_conf_loc}
+ssl_ciphers=HIGH" >> ${default_conf_loc}
+  fi
 # Copy the custom config to the default location
 else
   cp -f ${custom_conf_loc} ${default_conf_loc}
