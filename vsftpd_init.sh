@@ -74,5 +74,4 @@ else
 fi
 
 # Start vsftpd
-#/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
-/bin/sh
+/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
