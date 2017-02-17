@@ -9,7 +9,8 @@ Passive mode is enabled by default so you must set the env. variables:
   * port_pasv_ma
   * pasv_addr
   * pasv_addr_resolve
-unless pasv_enable is set to "NO"
+  
+unless pasv_enable is set to "NO"  
 
 ## Recommended Configuration
 * Build Arguments (--build-arg key=value)
