@@ -37,26 +37,26 @@ By default the FTP server uses active mode and is plain FTP. This mode requires 
   * port_pasv_min
   * port_pasv_max
 
-## Configuration Notes
+# Configuration Notes
 * Enabling SSL and/or passive mode
   * **All** requirements mentioned above are required to be set at the time of enabling.
 * Credentials
   * Password can be specified during container build but it is recommended to set the password via the environment variable.
 
-## Other Notes
+# Other Notes
 * To avoid weird permission errors, either the user (VUSER) or group (VGRP) should match that of other containers accessing the same data volumes.
 * You may override any of the environment variables either during the initial container build process or when declaring a new container (examples below).
 * Providing a custom configuration file requires port mapping/exposure for the container.
 * I recommend setting a memory limit on the deployed container (200 MiB).
 
-## Volume Configuration Examples
+# Volume Configuration Examples
 Host Path | Container Path
 --------- | --------------
 /cert/location/on/host.crt | /cert/location/on/client.crt:ro
 /key/location/on/host.key | /cert/location/on/client.key:ro
 plex-data-volume | /home/\<USER>/plex-data:rw
 
-## Available Environment Variables
+# Available Environment Variables
 Variable Name | Default Value | Description
 ------------- | ------------- | -----------
 VUSER | ftpuser | ftp user  
@@ -65,9 +65,13 @@ VGRP | ftpgroup | ftp group
 port_ftp_data | 20 | ftp data port 
 port_ftp_ctrl | 21 | ftp ctrl port  
 port_ftps_imp | 990 | implicit ftp port  
-port_pasv_min | 10100 | passive ftp minimum port  
-port_pasv_max | 10101 | passive ftp maximum port
+pasv_enable | NO | enable passive mode
+port_pasv_min | 0 | passive ftp minimum port  
+port_pasv_max | 0 | passive ftp maximum port
 pasv_addr_resolve | YES | whether or not the pasv_addr is a hostname
 pasv_addr | ftp.mysite.com | hostname or ip that points to this server  
+ssl_enable | NO | enable SSL/TLS for transfers
 rsa_cert | /etc/ssl-certs/vsftpd.pem | location of the ssl certificate in the container  
 rsa_key | /etc/ssl-certs/vsftpd.pem | location of the ssl key in the container
+custom_conf | false | should vsftpd use a custom configuration file
+custom_conf_loc | -- | path to the custom configuration file in the container
