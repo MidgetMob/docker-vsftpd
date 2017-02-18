@@ -32,6 +32,7 @@ By default the FTP server uses active mode and is plain FTP. This mode requires 
 
 ### Passive mode
 * Environment Variables
+  * pasv_enable
   * pasv_addr
   * pasv_addr_resolve
   * port_pasv_min
