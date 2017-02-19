@@ -6,7 +6,7 @@ set -e
 id -u ${VUSER} &>/dev/null || adduser ${VUSER} -D
 
 # Enforce password
-echo "${VUSER}:${VPASS}" | chpasswd | /dev/null
+echo "${VUSER}:${VPASS}" | chpasswd &> /dev/null
 
 # Make sure group exists
 getent group ${VGRP} &> /dev/null || addgroup ${VGRP}
