@@ -30,7 +30,7 @@ By default the FTP server uses active mode and is plain FTP. This mode requires 
 * Volumes
   * Certs/keys should be generated on the host and then mapped via volumes (see below for examples).
 
-### Passive mode
+### Enabling passive mode
 * Environment Variables
   * pasv_enable
   * pasv_addr
